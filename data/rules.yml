@@ -1,0 +1,69 @@
+version: "3.1"
+
+rules:
+
+- rule: show slots immediately
+  steps:
+  - intent: ask_slots
+  - action: return_slots
+
+- rule: AskNameAndGender init
+  steps:
+  - intent: start_with_api
+  - action: action_ask_name_and_gender
+#  - active_loop: action_ask_name_and_gender
+
+#- rule: submit  AskNameAndGender Form
+#  condition:
+#    - active_loop: action_ask_name_and_gender
+#  steps:
+#  - action: action_ask_name_and_gender
+#  - active_loop: null
+#  - slot_was_set:
+#      - requested_slot: null
+#  - action: action_ask_name_and_gender_submit
+
+- rule: AskNameAndGender submit
+  steps:
+  - intent: user_name_gender
+  - action: action_ask_name_and_gender_submit
+  - action: action_ask_basic_qz
+
+
+- rule: AskBasicQZ submit
+  steps:
+  - intent: basic_info
+  - action: action_ask_basic_qz_submit
+  - action: action_ask_location
+
+
+- rule: location base flow start
+  steps:
+    - intent: location
+    - action: action_ask_location_submit
+
+# should convert as story
+- rule: swim qs happy path
+  condition:
+    - slot_was_set:
+        - has_swim_facility: true
+  steps:
+    - intent: location_based_qs_init
+    - action: action_ask_swimming_info
+
+- rule: swim qs happy path
+  condition:
+    - slot_was_set:
+        - has_swim_facility: false
+  steps:
+    - intent: location_based_qs_init
+    - action: action_ask_swimming_info
+
+
+#- rule: swim qs sad path
+#  condition:
+#    - active_loop: action_ask_location_submit
+#    - slot_was_set:
+#      - has_swim_facility: false
+#  steps:
+#    - active_loop: swim

@@ -1,0 +1,63 @@
+version: "3.1"
+
+## map intents in nlu to actions in domain
+stories:
+
+- story: main story
+  steps:
+  - intent: start_with_api
+  - action: action_ask_name_and_gender
+
+
+#- story: location base flow start
+#  steps:
+#    - intent: location_based_qs_init
+#    - checkpoint: swim_qs
+
+
+#- story: swim qs happy path
+#  steps:
+#    - intent: location_based_qs_init
+#    - condition:
+#    - slot_was_set:
+#      - has_swim_facility: true
+#    - action: utter_test
+#    - action: action_ask_swimming_info
+
+#    - action: action_ask_swimming_info
+#    - action: utter_test
+#    - intent: swim_info
+#    - action: action_ask_swimming_info_submit
+#    - checkpoint: jogging_qs
+
+#- story: swim qs sad path
+#  steps:
+#    - intent: location_based_qs_init
+#    - or:
+#      - slot_was_set:
+#        - has_swim_facility: false
+#      - slot_was_set:
+#          - has_swim_facility: null
+#    - slot_was_set:
+#      - has_swim_facility: false
+#    - action: utter_test_2
+#    - action: action_ask_swimming_info
+#    - checkpoint: jogging_qs
+
+#- story: jogging qs happy path
+#  steps:
+#    - checkpoint: jogging_qs
+#    - slot_was_set:
+#      - has_walking_facility: true
+#    - action: action_ask_jogging_info
+#
+#- story: jogging qs sad path
+#  steps:
+#    - checkpoint: jogging_qs
+##    - slot_was_set:
+#    - or:
+#      - slot_was_set:
+#        - has_swim_facility: false
+#      - slot_was_set:
+#        - has_swim_facility: null
+#    - checkpoint: jogging_qs

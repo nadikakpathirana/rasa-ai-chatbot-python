@@ -1,0 +1,159 @@
+version: "3.1"
+
+## create responses for intents in nlu
+intents:
+  - bye
+  - ask_slots
+  - start_with_api
+  - user_name_gender
+  - basic_info
+  - location
+  - location_based_qs_init
+  - swim_info
+  - end
+
+actions:
+  - return_slots
+  - action_ask_name_and_gender
+  - action_ask_name_and_gender_submit
+  - action_ask_basic_qz
+  - action_ask_basic_qz_submit
+  - action_ask_location
+  - action_ask_location_submit
+  - action_ask_swimming_info
+  - action_ask_swimming_info_submit
+  - action_ask_jogging_info
+
+#entities:
+#  - name
+#  - gender
+#  - age
+#  - height
+#  - height_unit
+#  - weight
+#  - weight_unit
+#  - waist_circumference
+#  - waist_circumference_unit
+#  - has_swim_facility
+#  - has_walking_facility
+#  - swim_count_within_week
+#  - swim_hours_at_once
+
+slots:
+
+#  name:
+#    type: text
+#    influence_conversation: true
+#    mappings:
+#      - type: from_entity
+#        entity: name
+#        intent: user_name_gender
+#
+#  gender:
+#    type: text
+#    influence_conversation: true
+#    mappings:
+#      - type: from_entity
+#        entity: gender
+#        intent: user_name_gender
+
+  name:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: custom
+
+  gender:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: custom
+
+  age:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: custom
+
+  height:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: custom
+
+  height_unit:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: custom
+
+  weight:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: custom
+
+  weight_unit:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: custom
+
+  waist_circumference:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: custom
+
+  waist_circumference_unit:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: custom
+
+  location:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: custom
+
+  has_swim_facility:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: custom
+  
+  has_walking_facility:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: custom
+
+  swim_count_within_week:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: custom
+
+  swim_hours_at_once:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: custom
+
+responses:
+  utter_goodbye:
+  - text: "GoodBye, take care! Hope To See You Soon !\nJust Type 'hey' or 'hi' anytime again to redirect to the main phase of bot !"
+
+  utter_name_gender:
+  - text: "name is {name} and gender is {gender}"
+
+  utter_test:
+    - text: "swim happy"
+
+  utter_test_2:
+    - text: "swim sad"
+
+session_config:
+  session_expiration_time: 1
+  carry_over_slots_to_new_session: true

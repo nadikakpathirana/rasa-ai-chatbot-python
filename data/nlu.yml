@@ -1,0 +1,48 @@
+version: "3.1"
+
+## create intents (user input) and give examples here
+nlu:
+
+- intent: bye
+  examples: |
+    - bye
+
+- intent: ask_slots
+  examples: |
+    - slots
+
+- intent: start_with_api
+  examples: |
+    - start
+
+- intent: user_name_gender
+  examples: |
+    - name
+    - gender
+    - name and gender
+    - name and gender "{daswrf, hes}"
+
+- intent: basic_info
+  examples: |
+    - basic info
+    - "basic info @ {\"age\":\"23\",\"height\":\"168\",\"height_unit\":\"cm\",\"weight\":\"68\",\"weight_unit\":\"kg\",\"waist_circumference\":\"34\",\"waist_circumference_unit\":\"inch\"}"
+
+- intent: location
+  examples: |
+    - location
+    - location "{sdasd,af,afdas}"
+    - "location @ {\"location\":\"Britishcolombia\"}"
+
+- intent: location_based_qs_init
+  examples: |
+    - location based qs
+
+
+- intent: swim_info
+  examples: |
+    - swim info
+    - "swim_info @ {\"swim_count_within_week\":5,\"swim_hours_at_once\":2.5}"
+
+- intent: end
+  examples: |
+    - end
